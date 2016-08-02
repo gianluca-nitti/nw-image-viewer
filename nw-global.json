@@ -1,0 +1,14 @@
+{
+	//"name": "your-application-name", //Base name for generated files and packages. By default, the name specified in your package.json is used; uncomment this line to specify a different name.
+	// Version is read from package.json.
+	"gui-name": "Nw.js Image Viewer", //User-friendly name. This will be displayed in setup dialogs and similar.
+	"description": "A simple nw.js based application to view image files.",
+	"license": "LICENSE", //Name/path to a license text file. If you keep the default, you have to put a file named "LICENSE" in the same directory as nw-global.json.
+        "maintainer-name": "A package maintainer", //Full name of package maintainer
+        "maintainer-email": "packagemaintainer@example.com", //Email address of package maintainer
+	"out-dir": "dist", //Directory where generated installers/packages will be placed.
+	"ignore": ["*~", "picture.png"], //Array of patterns for files that mustn't be packaged. The value of out-dir is automatically added at runtime (output files from a previous build are always excluded). This file, nw-global.json, is also always ignored. The format is that of the .gitignore rules. More info here: https://www.npmjs.com/package/ignore
+	"log-level": "info",
+	"icon": "picture.png",
+	"categories": "Graphics"
+}

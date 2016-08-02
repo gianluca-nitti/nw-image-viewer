@@ -1,0 +1,11 @@
+html, body {height: 100%;}
+body {-webkit-user-select: none; cursor: default; overflow: hidden; padding: 10px;}
+a {color: black;}
+.input-group {margin-bottom: 10px;}
+.container-full {position: absolute; top: 50px; left:10px; right: 10px; bottom:-10px;}
+.alert-container {text-align: center;}
+.alert {display: inline-block;}
+#tabContents {position:absolute; overflow-y: auto; overflow-x: hidden; top: 0; left: 0; right: 0; bottom: 0; margin: 60px 10px 10px 10px; padding: 10px 0 10px 0;}
+.thumbnail {height: 200px; overflow: hidden;}
+.thumbnail img {max-width: 100%; max-height: 150px;}
+#carousel img {width: auto; height: auto; margin: 0 auto;}
