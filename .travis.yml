@@ -1,4 +1,4 @@
-language: generic
+language: node_js
 sudo: false # use the container-based Travis-CI infrastructure
 node_js:
 - "6" # use node.js 6 or above
