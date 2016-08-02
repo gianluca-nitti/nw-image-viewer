@@ -1,6 +1,9 @@
 language: generic
 sudo: false # use the container-based Travis-CI infrastructure
+node_js:
+- "6" # use node.js 6 or above
 install:
+- npm install # fetch dependencies
 - npm install -g nw-global-build
 - gem install fpm # nw-global-build uses this to build Linux packages (.deb and .rpm)
 addons:
