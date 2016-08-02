@@ -7,4 +7,5 @@ addons:
   apt:
     packages:
       - nsis
+      - rpm
 script: nw-global-build build
