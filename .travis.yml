@@ -4,7 +4,7 @@ node_js:
 - "6" # use node.js 6 or above
 install:
 - npm install # fetch dependencies
-- npm install -g nw-global-build
+- npm install -g nw-global-build # install the nw.js-global-install cli tool
 - gem install fpm # nw-global-build uses this to build Linux packages (.deb and .rpm)
 addons:
   apt:
@@ -12,3 +12,17 @@ addons:
       - nsis
       - rpm
 script: nw-global-build build
+deploy: # stuff to publish the built packages to github releases
+  provider: releases
+  api_key:
+    secure: CLbfTJDUYQlptzPjT9bSj2GE/dhdGLXxLI9oeKhNd2SD3FpUAcoLvHlr5xV4PLHd2LgsS+AGiZrBtGR1dtf8hDDo5J8YZR+0nR3Boecz1ns5vl+yhiyFAiGupciC1S2U9TPv0zDEISa4sXA4vhwt79mNIcELrChYsE4P/dM8JhgV9Ur+oiO2OdTX7CFaGfgbmsWA66jHqeKik0oecR3m/P61ul2Fw01qg9Bp4X196wZYs566C0m90wni/AkGXt7VAnui/FcH2nrXnp1DPNW2wGBFRfiXFZzH7+GwEEajbbvBeYaN9on0HAOwqzFZsebdxut1evFI+uPefEx09G9qaGapGQ2lLHseooJ6jrdJd7DaKwT2jptH7Cjng7o8TG9PTpLCoim0RMpYuO7JGK+2Nzr4teY8A9K123teXPo77N4wESYiWFMsAOmuQxwcj4jja5WFkgjLJ+GkiDLHf6S7w3zYkzpqyRfmZJqACF6z5+6bCwyPMV+L+9IVYlhs0jeq5KdEpcMTmgNdvGN878XYI0mm+M01R5V8qyvpF1IDAQl0rttXyCp98UDuNATJR4NiIyHrjHo/8M9/ktt+tVDgLRr1nXhd4HH1mcAQHU2bL9E0NxBH/Oq0xxvCYI8T9cwc51+EXgfkHxvA0/5krOYE2i9p/T5U278G+P5f005/IMs=
+  skip-cleanup: true
+  file:
+    - dist/nw-image-viewer-linux-i386.deb
+    - dist/nw-image-viewer-linux-i386.rpm
+    - dist/nw-image-viewer-linux-x86_64.deb
+    - dist/nw-image-viewer-linux-x86_64.rpm
+    - dist/nw-image-viewer-win-setup.exe
+  on:
+    repo: gianluca-nitti/nw-image-viewer
+    tags: true
