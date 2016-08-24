@@ -11,3 +11,6 @@ test_script:
   - npm --version
   - nw-global-build build win
 build: off
+artifacts:
+  - path: dist/nw-image-viewer-win-setup.exe
+    name: Installer for Windows
