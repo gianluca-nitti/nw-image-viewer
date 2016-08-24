@@ -4,6 +4,7 @@ install:
   - ps: Install-Product node 6
   - npm install
   - npm install -g nw-global-build
+  - set PATH = %PATH%;"C:\Program Files (x86)\NSIS" #put makensis on PATH
 test_script:
   - node --version
   - npm --version
