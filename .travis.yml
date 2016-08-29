@@ -12,6 +12,10 @@ addons:
       - nsis
       - rpm
       - wine # to run rcedit.exe to add icon to the Windows launcher
+env:
+  global:
+    # prevent wine popup dialogs about installing additional packages
+    - WINEDLLOVERRIDES="mscoree,mshtml="
 script: nw-global-build build
 deploy: # stuff to publish the built packages to github releases
   provider: releases
