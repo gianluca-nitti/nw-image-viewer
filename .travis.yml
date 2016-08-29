@@ -16,6 +16,9 @@ env:
   global:
     # prevent wine popup dialogs about installing additional packages
     - WINEDLLOVERRIDES="mscoree,mshtml="
+before_script:
+  # Setup ~/.wine by running a command
+  - wine hostname
 script: nw-global-build build
 deploy: # stuff to publish the built packages to github releases
   provider: releases
