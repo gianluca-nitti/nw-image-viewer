@@ -1,24 +1,22 @@
+dist: trusty # required because rcedit (tool to edit icon of Windows launcher) needs wine1.6, while Ubuntu precise has wine1.4
+sudo: required
 language: node_js
-sudo: false # use the container-based Travis-CI infrastructure
 node_js:
 - "6" # use node.js 6 or above
 install:
+- sudo dpkg --add-architecture i386
+- sudo apt-get update
+- sudo apt-get install wine1.6 nsis rpm
 - npm install # fetch dependencies
 - npm install -g nw-global-build # install the nw.js-global-install cli tool
 - gem install fpm # nw-global-build uses this to build Linux packages (.deb and .rpm)
-addons:
-  apt:
-    packages:
-      - nsis
-      - rpm
-      - wine # to run rcedit.exe to add icon to the Windows launcher
 env:
   global:
     # prevent wine popup dialogs about installing additional packages
     - WINEDLLOVERRIDES="mscoree,mshtml="
 before_script:
-  # Setup ~/.wine by running a command
-  - wine hostname
+  - wine hostname # setup ~/.wine
+  - wine --version # print wine version for debugging
 script: nw-global-build build
 deploy: # stuff to publish the built packages to github releases
   provider: releases
