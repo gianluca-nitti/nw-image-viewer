@@ -5,8 +5,6 @@ var filesize = require("filesize");
 var gui = require("nw.gui");
 var strHelper = require("./js/strHelper.js");
 
-gui.Window.get().showDevTools();
-
 var fileList = [];
 
 $(document).ready(function(){
