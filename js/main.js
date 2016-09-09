@@ -8,7 +8,7 @@ var strHelper = require("./js/strHelper.js");
 var fileList = [];
 
 $(document).ready(function(){
-  $("#dir").val((process.platform === 'win32') ? process.env.HOMEPATH : process.env.HOME);
+  $("#dir").val(process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME']);
   updateDir();
   updateCarouselSize();
 
@@ -61,6 +61,7 @@ $(document).ready(function(){
           fileList.push(filePath);
           fileStats = fs.statSync(filePath);
           $("#detailsList").append('<tr><td><a href="#" class="detailsItem">' + fileName + '</a></td><td>' + fileStats.mtime.toLocaleDateString() + ' ' + fileStats.mtime.toLocaleTimeString() + '</td><td>' + fileMime.substr(6) + '</td><td>' + filesize(fileStats.size) + '</td></tr>');
+          filePath = (process.platform !== 'win32' ? 'file://' : '') + filePath;
           $("#thumbnailsList").append('<div class="col-xs-4 col-md-3 col-lg-2"><a href="#" class="thumbnail"><img src="' + filePath + '" /><div class="caption">' + fileName + '</div></a></div>');
           $(".carousel-inner").append('<div class="item"><img src="' + filePath + '"></div>');
           $(".carousel-inner :first").addClass("active");
